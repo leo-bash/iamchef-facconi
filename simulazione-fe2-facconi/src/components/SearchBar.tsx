@@ -36,7 +36,6 @@ function SearchBar() {
             className={styles.input}
           />
         </div>
-        <button className={styles.searchBtn} type="submit">Search Recipes</button>
       </form>
 
       {filteredResults.length > 0 && (

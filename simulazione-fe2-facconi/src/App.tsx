@@ -1,7 +1,6 @@
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import './App.css';
-import { ingredients } from './data/ingredients';
 
 //FIXME: Creare componenti vuoti per riempire la pagina come da design (SuggestedRecipes, Footer, ecc.)
 
@@ -9,8 +8,7 @@ import { ingredients } from './data/ingredients';
 
 function App() {
 
-const 
-const handleSearch = (ingredients: string) => {
+const handleSearch = (ingredients: string[]) => {
   console.log('Searching recipes with ingredients:', ingredients);
 }
 
