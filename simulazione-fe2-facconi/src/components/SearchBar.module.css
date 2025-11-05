@@ -1,0 +1,141 @@
+
+.heroSection {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 32px;
+}
+
+.heroTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #222;
+  text-align: center;
+}
+
+.heroSubtitle {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 32px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.inputWrapper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 24px;
+  background: #f7fafb;
+  color: #222;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+.input:focus {
+  box-shadow: 0 2px 8px rgba(255,45,0,0.08);
+}
+
+.searchBtn {
+  width: 100%;
+  background: #ff2d00;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 16px 0;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(255,45,0,0.08);
+}
+.searchBtn:hover {
+  background: #e62a00;
+}
+
+
+.resultsContainer {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-top: 32px;
+  width: 100%;
+}
+.resultsTitle {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.1rem;
+}
+.resultsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.resultItem {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  transition: transform 0.2s;
+}
+.resultItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.13);
+}
+.image {
+  width: 44px;
+  height: 44px;
+  border-radius: 5px;
+  margin-right: 15px;
+  object-fit: cover;
+}
+.name {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.noResults {
+  background: #fff3cd;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: #856404;
+  margin-top: 32px;
+}
