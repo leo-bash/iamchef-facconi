@@ -28,3 +28,19 @@ body {
   min-height: calc(100vh - 56px);
   padding: 0 16px;
 }
+
+.heroTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #222;
+  text-align: center;
+}
+
+.heroSubtitle {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 32px;
+  text-align: center;
+  line-height: 1.4;
+}

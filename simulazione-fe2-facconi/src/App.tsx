@@ -1,40 +1,32 @@
-
-
-import React from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import './App.css';
+import { ingredients } from './data/ingredients';
 
-const styles = {
-  heroTitle: {
-    fontSize: '2rem',
-    fontWeight: 600,
-    margin: '0 0 12px 0',
-    color: '#222',
-    textAlign: 'center' as const,
-  },
-  heroSubtitle: {
-    color: '#666',
-    fontSize: '1rem',
-    marginBottom: '32px',
-    textAlign: 'center' as const,
-    lineHeight: 1.4,
-  },
-};
+//FIXME: Creare componenti vuoti per riempire la pagina come da design (SuggestedRecipes, Footer, ecc.)
 
-const App: React.FC = () => {
+
+
+function App() {
+
+const 
+const handleSearch = (ingredients: string) => {
+  console.log('Searching recipes with ingredients:', ingredients);
+}
+
+
   return (
     <div className="app">
       <Header />
       <main className="main">
-        <h2 style={styles.heroTitle}>What do we cook today?</h2>
-        <p style={styles.heroSubtitle}>
+        <h2 className="heroTitle">What do we cook today?</h2>
+        <p className="heroSubtitle">
           Search recipes by the ingredients<br />you have at home
         </p>
-        <SearchBar />
+        <SearchBar onSearch={handleSearch} />
       </main>
     </div>
   );
-};
+}
 
 export default App;

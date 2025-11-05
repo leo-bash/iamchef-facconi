@@ -1,11 +1,11 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { ChangeEvent } from 'react';
 import type { Ingredient } from '../types/Ingredient';
 import { ingredients } from '../data/ingredients';
 import styles from './SearchBar.module.css';
 
-const SearchBar: React.FC = () => {
+function SearchBar() {
   const [searchText, setSearchText] = useState<string>('');
   const [filteredResults, setFilteredResults] = useState<Ingredient[]>([]);
 
