@@ -11,6 +11,16 @@ export const ingredients: { results: Ingredient[] } = {
     { id: 11294, name: "maui onion", image: "sweet-onion.png" },
     { id: 17164, name: "venison", image: "deer-medaillons.jpg" },
     { id: 11583, name: "mixed vegetables", image: "mixed-vegetables.png" },
-    { id: 99302, name: "vermouth", image: "vermouth.jpg" }
+    { id: 99302, name: "vermouth", image: "vermouth.jpg" },
+    { id: 10015024, name: "redfish", image: "cod-fillet.jpg" },
+    { id: 14096, name: "red wine", image: "red-wine.jpg" },
+    { id: 10016112, name: "red miso", image: "miso.jpg" },
+    { id: 93737, name: "red cinnamon candy", image: "red-cinnamon-candies.jpg" },
+    { id: 10511643, name: "red kuri squash", image: "kuri-or-hokkaido.jpg" },
+    { id: 1009279, name: "red plum", image: "red-plum.png" },
+    { id: 11080, name: "red beet", image: "beets.jpg" },
+    { id: 10011282, name: "red onion", image: "red-onion.png" },
+    { id: 10511819, name: "red chili pepper", image: "red-chili.jpg" },
+    { id: 1079003, name: "red apple", image: "red-delicious-apples.png" }
   ]
 };
