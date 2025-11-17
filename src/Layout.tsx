@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import Header from './components/Header';
-import SearchBar from './components/SearchBar';
-import './App.css';
+import { useState } from "react";
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+import "./App.css";
 
 //FIXME: Creare componenti vuoti per riempire la pagina come da design (SuggestedRecipes, Footer, ecc.)
 

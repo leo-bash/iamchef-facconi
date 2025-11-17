@@ -1,19 +1,19 @@
 
-import { useState, useEffect } from 'react';
-import Badges from './Badges';
-import type { ChangeEvent } from 'react';
-import type { Ingredient } from '../types/Ingredient';
-import { ingredients } from '../data/ingredients';
-import { recipes } from '../data/recipes';
-import RecipeCard from './RecipeCard';
-import styles from './SearchBar.module.css';
+import { useState, useEffect } from "react";
+import Badges from "./Badges";
+import type { ChangeEvent } from "react";
+import type { Ingredient } from "../types/Ingredient";
+import { ingredients } from "../data/ingredients";
+import { recipes } from "../data/recipes";
+import RecipeCard from "./RecipeCard";
+import styles from "./SearchBar.module.css";
 
 interface SearchBarProps {
   onViewChange?: (isSearching: boolean) => void;
 }
 
 function SearchBar({ onViewChange }: SearchBarProps) {
-  const [searchText, setSearchText] = useState<string>('');
+  const [searchText, setSearchText] = useState<string>("");
   const [filteredResults, setFilteredResults] = useState<Ingredient[]>([]);
   const [selectedIngredients, setSelectedIngredients] = useState<Ingredient[]>([]);
   const [showResults, setShowResults] = useState(false);
@@ -49,7 +49,7 @@ function SearchBar({ onViewChange }: SearchBarProps) {
     const value = e.target.value;
     setSearchText(value);
 
-    if (value.trim() === '') {
+    if (value.trim() === "") {
       setFilteredResults([]);
     } else {
       const filtered = ingredients.results.filter((ingredient) =>
@@ -63,7 +63,7 @@ function SearchBar({ onViewChange }: SearchBarProps) {
     if (!selectedIngredients.some(i => i.id === ingredient.id)) {
       setSelectedIngredients([...selectedIngredients, ingredient]);
     }
-    setSearchText('');
+    setSearchText("");
     setFilteredResults([]);
   };
 

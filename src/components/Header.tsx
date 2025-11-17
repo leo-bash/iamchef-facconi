@@ -1,5 +1,5 @@
 
-import styles from './Header.module.css';
+import styles from "./Header.module.css";
 
 function Header() {
   return (
@@ -11,6 +11,6 @@ function Header() {
       </div>
     </header>
   );
-};
+}
 
 export default Header;

@@ -1,4 +1,4 @@
-import styles from './Badge.module.css';
+import styles from "./Badge.module.css";
 
 interface BadgeProps {
   label: string;

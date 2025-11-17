@@ -1,5 +1,5 @@
-import Badge from './Badge';
-import type { Ingredient } from '../types/Ingredient';
+import Badge from "./Badge";
+import type { Ingredient } from "../types/Ingredient";
 
 interface BadgesProps {
   ingredients: Ingredient[];
