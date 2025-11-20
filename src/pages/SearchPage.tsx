@@ -1,61 +1,39 @@
-import { useState } from "react";
-import type { IngredientInterface } from "../types/ingredients";
-import { useApi } from "../hooks/useApi";
-import { useDebounce } from "../hooks/useDebounce";
-import SuggestList from "../components/suggest/SuggestList";
-import SelectedIngredient from "../components/SelectedIngredient";
+import { type IngredientInterface } from "../types/ingredients";
+import SearchBar from "../components/header/components/search-bar/Searchbar";
+import SelectedList from "../components/header/components/selected-item/SelectedList";
+import DiscoverRecipeBtn from "../components/header/components/discover-recipes-btn/DiscoverRecipeBtn";
 
 type SearchPageProps = {
+  onSuggestClick: (ing: IngredientInterface) => void;
+  onBadgeRemove: (ing: IngredientInterface) => void;
+  selectedIng: IngredientInterface[];
   onSearchClick: () => void;
+  isDiscover: boolean;
 };
 
-const SearchPage = ({ onSearchClick }: SearchPageProps) => {
-  const [inputValue, setInputValue] = useState("");
-  const [selectedIngredients, setSelectedIngredients] = useState<
-    IngredientInterface[]
-  >([]);
-
-  const debouncedValue = useDebounce(inputValue, 500);
-
-  const { data: suggestions } = useApi<IngredientInterface[]>(
-    debouncedValue
-      ? `https://api.spoonacular.com/food/ingredients/autocomplete?query=${debouncedValue}`
-      : ""
-  );
-
-  const addIngredient = (ing: IngredientInterface) => {
-    setSelectedIngredients([...selectedIngredients, ing]);
-  };
-
-  const removeIngredient = (ing: IngredientInterface) => {
-    setSelectedIngredients(selectedIngredients.filter((i) => i !== ing));
-  };
-
+const searchPage = ({
+  onSuggestClick,
+  onBadgeRemove,
+  selectedIng,
+  onSearchClick,
+  isDiscover,
+}: SearchPageProps) => {
   return (
     <div className="flex flex-col gap-4">
-      <input
-        value={inputValue}
-        placeholder="Cerca ingredienti..."
-        onChange={(e) => setInputValue(e.target.value)}
+      <p className="text-white font-jainiPurva text-lg font-normal leading-[1.2em]">
+        Dimmi gli ingredienti e ti dirò una ricetta{" "}
+      </p>
+      <SearchBar handleSuggestClick={onSuggestClick} />
+
+      <SelectedList ingredients={selectedIng} handleRemove={onBadgeRemove} />
+
+      <DiscoverRecipeBtn
+        ingredients={selectedIng}
+        onSearchClick={onSearchClick}
+        isDiscover={isDiscover}
       />
-
-      {suggestions && (
-        <SuggestList ingredients={suggestions} handleClick={addIngredient} />
-      )}
-
-      <div className="flex gap-2 flex-wrap">
-        {selectedIngredients.map((ing) => (
-          <SelectedIngredient
-            key={ing.name}
-            ingredient={ing}
-            handleRemove={removeIngredient}
-          />
-        ))}
-      </div>
-
-      <button onClick={onSearchClick}>Cerca ricette</button>
     </div>
   );
 };
 
-export default SearchPage;
+export default searchPage;

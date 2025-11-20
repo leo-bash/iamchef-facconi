@@ -1,4 +1,4 @@
-
+/* Consolidated from SearchBar.module.css */
 .heroSection {
   width: 100%;
   max-width: 400px;
@@ -86,7 +86,6 @@
 .searchBtn:hover {
   background: #e62a00;
 }
-
 
 .resultsBox {
   background: #fff;
@@ -244,4 +243,96 @@
 
 .instructionsBtn:hover {
   background: #e62a00;
+}
+
+/* Consolidated from Header.module.css */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 16px 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  min-height: 56px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.brand {
+  color: #ff2d00;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-left: 4px;
+  letter-spacing: 0.5px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.iconBtn:hover {
+  background: #ffe5db;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Consolidated from Badge.module.css */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgb(255, 228, 217);
+  color: #B81900;
+  border-radius: 16px;
+  padding: 4px 12px;
+  font-size: 0.95rem;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ffb49a;
+}
+
+.removeBtn {
+  background: none;
+  color: #B81900;
+  font-size: 1rem;
+  margin-left: 8px;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+}
+.removeBtn:focus,
+.removeBtn:active {
+  outline: none;
+  box-shadow: none;
+  border: none;
 }

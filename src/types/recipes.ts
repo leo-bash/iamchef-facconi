@@ -1,17 +1,60 @@
+import type { IngredientInterface } from "./ingredients";
+
 export interface RecipeInterface {
   id: number;
   title: string;
-  image: string;
-  summary?: string;
-  readyInMinutes?: number;
-  servings?: number;
-  pricePerServing?: number;
+  image: string | "https://img.spoonacular.com/recipes/982365-556x370.jpg";
+  imageType: string;
+  servings: number;
+  readyInMinutes: number;
+  cookingMinutes: number;
+  preparationMinutes: number;
+  license?: string;
+  sourceName?: string;
+  sourceUrl?: string;
+  spoonacularSourceUrl?: string;
   healthScore?: number;
-  extendedIngredients?: {
-    id?: number;
-    name?: string;
-    measures?: {
-      metric?: { amount?: number; unitShort?: string };
-    };
-  }[];
+  spoonacularScore?: number;
+  pricePerServing?: number;
+  analyzedInstructions?: any[];
+  cheap?: boolean;
+  creditsText?: string;
+  cuisines?: string[];
+  dairyFree?: boolean;
+  diets?: string[];
+  gaps?: string;
+  glutenFree?: boolean;
+  instructions?: string;
+  ketogenic?: boolean;
+  lowFodmap?: boolean;
+  occasions?: string[];
+  sustainable?: boolean;
+  vegan?: boolean;
+  vegetarian?: boolean;
+  veryHealthy?: boolean;
+  veryPopular?: boolean;
+  whole30?: boolean;
+  weightWatcherSmartPoints?: number;
+  dishTypes?: string[];
+  extendedIngredients: IngredientInterface[];
+  summary?: string;
+  winePairing?: WinePairing | null;
+}
+
+export interface WinePairing {
+  pairedWines: string[];
+  pairingText: string;
+  productMatches: WineProduct[];
+}
+
+export interface WineProduct {
+  id: number;
+  title: string;
+  description: string;
+  price: string;
+  imageUrl: string;
+  averageRating: number;
+  ratingCount: number;
+  score: number;
+  link: string;
 }
