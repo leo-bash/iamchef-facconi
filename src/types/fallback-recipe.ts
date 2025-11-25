@@ -1,8 +1,5 @@
 import type { RecipeInterface } from "./recipes";
 
-//* qui inserisco le ricette di fallback, ovvero le ricette statiche da usare finchè non collego l'api.
-//* In questo modo posso gestirle in maniera modulare e molto più comoda
-
 export const fallbackRecipe: RecipeInterface = {
 	id: 1,
 	title: "Sushi Rolls",

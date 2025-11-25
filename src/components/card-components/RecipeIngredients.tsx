@@ -1,6 +1,5 @@
 import type { IngredientInterface } from "../../types/ingredients";
 
-// Puoi anche aggiungere la preview dei primi 2-3 ingredienti
 export const RecipeIngredients = ({
   extendedIngredients,
 }: {

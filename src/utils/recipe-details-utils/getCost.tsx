@@ -9,8 +9,8 @@ export const getCost = (
   }
   return (
     <IconBadge
-      icon={"💸"}
-      text={"Costoso"}
+      icon={""}
+      text={"Costo elevato"}
       color={"bg-yellow-100 text-yellow-800"}
     />
   );

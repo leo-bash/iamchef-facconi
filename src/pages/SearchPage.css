@@ -1,0 +1,128 @@
+.search-page {
+  padding: var(--spacing-lg) var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xl);
+  width: 100%;
+  min-height: 100vh;
+  justify-content: center;
+  max-width: 100%;
+  margin: 0 auto;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.main-title {
+  text-align: center;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  padding: 0 var(--spacing-md);
+  animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.6;
+  font-weight: 400;
+  padding: 0 var(--spacing-md);
+}
+
+.search-area {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-md);
+  background: var(--bg-card);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.selected-list {
+  width: 100%;
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  min-height: 48px;
+  padding: var(--spacing-sm);
+  background: rgba(255, 140, 66, 0.03);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-color);
+  -webkit-overflow-scrolling: touch;
+  transition: all 0.3s ease;
+}
+
+.selected-list:empty::before {
+  content: 'Nessun ingrediente selezionato';
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.selected-list::-webkit-scrollbar { height: 6px; }
+.selected-list::-webkit-scrollbar-track { background: var(--bg-secondary); border-radius: 8px; }
+.selected-list::-webkit-scrollbar-thumb { 
+  background: var(--accent-primary);
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.selected-list::-webkit-scrollbar-thumb:hover { background: var(--accent-secondary); }
+
+.discover-btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: stretch;
+  margin-top: var(--spacing-sm);
+}
+
+@media (min-width: 640px) {
+  .search-page {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    gap: var(--spacing-2xl);
+  }
+  .search-area {
+    max-width: 700px;
+    padding: var(--spacing-2xl) var(--spacing-xl);
+  }
+  .selected-list {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .search-page {
+    padding: var(--spacing-2xl);
+  }
+  .search-area {
+    max-width: 800px;
+  }
+}

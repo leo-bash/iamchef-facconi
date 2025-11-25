@@ -1,14 +1,11 @@
 import React from "react";
-
-//* Questo componente definisce lo stato generico dei bottoni di scroll e di visualizza dettagli, in base al nome del file dell'icona, riceve l'indice corrente e lo aggiorna, oppure cambia pagina
+import "./ScrollBtn.css";
 
 type ScrollBtnProps = {
   currentIndex: number;
   onClick: (newIndex: number) => void;
   maxIndex: number;
   isIncrement: boolean;
-  cursor: string;
-  opacity: string;
 };
 
 const ScrollBtn: React.FC<ScrollBtnProps> = ({
@@ -16,10 +13,7 @@ const ScrollBtn: React.FC<ScrollBtnProps> = ({
   onClick,
   maxIndex,
   isIncrement,
-  cursor,
-  opacity,
 }: ScrollBtnProps) => {
-  //# definisco incrementare o decrementare l'indice
   const params = isIncrement
     ? currentIndex < maxIndex
       ? (currentIndex = currentIndex + 1)
@@ -28,11 +22,18 @@ const ScrollBtn: React.FC<ScrollBtnProps> = ({
     ? (currentIndex = currentIndex - 1)
     : currentIndex;
 
+  const isDisabled = isIncrement ? currentIndex >= maxIndex : currentIndex <= 0;
+
   return (
-    <button className={`${opacity} ${cursor}`} onClick={() => onClick(params)}>
+    <button
+      className="nav-arrow-btn"
+      onClick={() => onClick(params)}
+      disabled={isDisabled}
+      aria-label={isIncrement ? "Next recipe" : "Previous recipe"}
+    >
       <img
-        className={`w-14 h-14 ${!isIncrement && "rotate-y-180"}`}
-        src={`/icons/nextRecipeIcon.svg`}
+        src={isIncrement ? `/arrow_forward_ios_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg` : `/arrow_back_ios_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg`}
+        alt={isIncrement ? "Next" : "Previous"}
       />
     </button>
   );

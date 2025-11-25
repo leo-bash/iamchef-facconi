@@ -1,13 +1,47 @@
 import { useEffect, useState } from "react";
 
+/**
+ * @returns La chiave API
+ */
+const getApiKey = (): string => {
+  let apiKey = "";
+  try {
+    const zustandData = localStorage.getItem("api-key-storage");
+    if (zustandData) {
+      const parsed = JSON.parse(zustandData);
+      apiKey = parsed.state?.apiKey || "";
+    }
+  } catch (e) {
+    apiKey = "";
+  }
+  if (!apiKey) {
+    apiKey = import.meta.env.VITE_API_KEY;
+  }
+  return apiKey;
+};
+
+/**
+ * @param id 
+ * @returns 
+ */
+export const getRecipeDetailsURL = (id: number) => {
+  const ENDPOINT = `/recipes/${id}/information`;
+  const apiKey = getApiKey();
+  return `${import.meta.env.VITE_BASE_URL}${ENDPOINT}?apiKey=${apiKey}`;
+};
+
 interface UseApiReturn<T> {
-  data: T | null;
+  data: T | T[] | null;
   loading: boolean;
   error: string | null;
 }
 
+/**
+ * @param url 
+ * @returns 
+ */
 export function useApi<T = any>(url: string): UseApiReturn<T> {
-  const [data, setData] = useState<T | null>(null);
+  const [data, setData] = useState<T | T[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,7 +56,15 @@ export function useApi<T = any>(url: string): UseApiReturn<T> {
         const result = await response.json();
 
         if (!cancelled) {
-          setData(result.results);
+          if (Array.isArray(result)) {
+            setData(result as T[]);
+          } else if (result && Array.isArray(result.results)) {
+            setData(result.results as T[]);
+          } else if (result && typeof result === "object") {
+            setData(result as T);
+          } else {
+            setData(null);
+          }
         }
       } catch (err) {
         if (!cancelled) {
@@ -46,14 +88,24 @@ export function useApi<T = any>(url: string): UseApiReturn<T> {
 }
 
 /**
- * Funzione di helper per costruire l'URL delle API per la ricerca degli ingredienti
- * @param query stringa di ricerca
- * @returns URL completo per la chiamata API
+ * @param query 
+ * @returns 
  */
 export const getIngredientsURL = (query: string) => {
-
   const ENDPOINT = "/food/ingredients/search";
   const RESULTS_NUM = 10;
+  const apiKey = getApiKey();
+  return `${import.meta.env.VITE_BASE_URL}${ENDPOINT}?apiKey=${apiKey}&query=${query}&number=${RESULTS_NUM}`;
+};
 
-  return `${import.meta.env.VITE_BASE_URL}${ENDPOINT}?apiKey=${import.meta.env.VITE_API_KEY}&query=${query}&number=${RESULTS_NUM}`;
-}
+/**
+ * @param ingredients - 
+ * @returns 
+ */
+export const getRecipesByIngredientsURL = (ingredients: string[]) => {
+  const ENDPOINT = "/recipes/findByIngredients";
+  const RESULTS_NUM = 20;
+  const query = ingredients.join(",");
+  const apiKey = getApiKey();
+  return `${import.meta.env.VITE_BASE_URL}${ENDPOINT}?apiKey=${apiKey}&ingredients=${query}&number=${RESULTS_NUM}`;
+};

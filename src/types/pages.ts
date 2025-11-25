@@ -6,6 +6,7 @@ export type CurrentPage = {
 };
 
 export type Page =
+  | { page: "intro" }
   | { page: "homepage" }
   | { page: "discover-recipes" }
   | { page: "recipe-details"; recipeData?: RecipeInterface };
