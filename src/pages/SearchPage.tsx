@@ -38,13 +38,11 @@ export const SearchPage = (): JSX.Element => {
     setSelectedIng(selectedIng.filter(i => i.id !== ing.id));
   };
 
-  const handleSearchClick = () => {
-    setIsDiscover(true);
-    navigate("/discover-recipes", {
-      state: { ingredients: selectedIng.map(ing => ing.id) }, // passaggio tramite React Router degli ingredienti spero ******************************
-      replace: false
-    });
-  };
+ const handleSearchClick = () => {
+  setIsDiscover(true);
+  const ids = selectedIng.map(ing => ing.id).join(',');
+  navigate(`/discover-recipes?ingredients=${ids}`);
+};
 
   return (
     <div className="search-page">
