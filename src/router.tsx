@@ -12,7 +12,7 @@ const routes: RouteObject[] = [
     element: <SearchPage />
   },
   {
-    path: '/discover-recipes?ingredients=${ids}',
+    path: '/discover-recipes',
     element: <DiscoverRecipes />
   },
   {

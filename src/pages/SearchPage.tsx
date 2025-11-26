@@ -40,8 +40,8 @@ export const SearchPage = (): JSX.Element => {
 
  const handleSearchClick = () => {
   setIsDiscover(true);
-  const ids = selectedIng.map(ing => ing.id).join(',');
-  navigate(`/discover-recipes?ingredients=${ids}`);
+  const ingredientNames = selectedIng.map(ing => ing.name).join(',');
+  navigate(`/discover-recipes?ingredients=${ingredientNames}`);
 };
 
   return (

@@ -1,34 +1,25 @@
 import { RecipeCard } from "../components/card-components/RecipeCard";
 import { ScrollBtnSection } from "../components/scroll-btn/ScrollBtnSection";
 import { useApi, getRecipesByIngredientsURL } from "../hooks/useApi";
-import type { RecipeInterface } from "../types/recipes";
-import type { IngredientInterface } from "../types/ingredients";
 import "./DiscoverRecipes.css";
+import { useState } from "react";
 
-type DiscoverRecipesProps = {
-  onRecipeDetailClick: (recipe: RecipeInterface) => void;
-  goToHomePage: () => void;
-  currentIndex: number;
-  setCurrentIndex: (index: number) => void;
-  selectedIng: IngredientInterface[];
-};
+import { useNavigate, useSearchParams } from "react-router";
 
-function DiscoverRecipes({
-  onRecipeDetailClick,
-  goToHomePage,
-  currentIndex,
-  setCurrentIndex,
-  selectedIng,
-}: DiscoverRecipesProps) {
+function DiscoverRecipes() {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  
+  // Estrai i nomi degli ingredienti dall'URL (es: ?ingredients=tomato,cheese)
+  const ingredientsParam = searchParams.get('ingredients');
+  const ingredientNames = ingredientsParam ? ingredientsParam.split(',') : [];
 
-  // Estrai solo i nomi degli ingredienti
-  const ingredientNames = selectedIng.map((ing) => ing.name);
-  // Costruisci l'URL per la ricerca ricette
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Costruisci l'URL per la chiamata API
   const recipesUrl = getRecipesByIngredientsURL(ingredientNames);
-  // Usa l'hook per ottenere le ricette
   const { data: apiRecipes, loading, error } = useApi(recipesUrl);
 
-  // Mostra solo le ricette ottenute dall'API
   const recipesToShow = apiRecipes || [];
 
   return (
@@ -41,20 +32,21 @@ function DiscoverRecipes({
         ) : (
           <RecipeCard
             recipe={recipesToShow[currentIndex]}
-            onClickDetails={onRecipeDetailClick}
-            selectedIng={selectedIng}
+            onClickDetails={() =>
+              navigate(`/recipe/${recipesToShow[currentIndex].id}`, {
+                state: { fromIngredients: ingredientNames }
+              })
+            }
           />
         )}
 
         {!loading && !error && recipesToShow.length > 0 && (
-          <div className="discover-navigation">
-            <ScrollBtnSection
-              currentIndex={currentIndex}
-              maxIndex={recipesToShow.length - 1}
-              setCurrentIndex={setCurrentIndex}
-              goToHomePage={goToHomePage}
-            />
-          </div>
+          <ScrollBtnSection
+            currentIndex={currentIndex}
+            maxIndex={recipesToShow.length - 1}
+            setCurrentIndex={setCurrentIndex}
+            goToHomePage={() => navigate("/")}
+          />
         )}
       </div>
     </div>
