@@ -20,10 +20,8 @@
 .recipe-details-card {
   width: 100%;
   background: var(--bg-card);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  box-shadow: var(--shadow-md);
   padding: var(--spacing-lg);
   border: 1px solid var(--border-color);
 }
@@ -52,10 +50,10 @@
 }
 
 .error-back-btn {
-  background: var(--accent-gradient);
+  background: var(--accent-primary);
   color: #ffffff;
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: 100px;
   padding: 12px 24px;
   font-weight: 600;
   cursor: pointer;
@@ -64,8 +62,9 @@
 }
 
 .error-back-btn:hover {
+  background: var(--accent-secondary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 140, 66, 0.4);
+  box-shadow: 0 4px 16px rgba(255, 68, 35, 0.3);
 }
 
 .recipe-image-container {
@@ -89,12 +88,9 @@
 
 .rd-title {
   text-align: center;
-  font-size: clamp(1.5rem, 5vw, 2.2rem);
-  font-weight: 800;
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 700;
+  color: var(--text-primary);
   margin: 0 0 16px 0;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -123,7 +119,7 @@
   line-height: 1.7;
   margin: 16px 0;
   padding: 16px;
-  background: rgba(99, 102, 241, 0.05);
+  background: #F8F8F8;
   border-radius: var(--radius-md);
   border-left: 3px solid var(--accent-primary);
 }
@@ -140,12 +136,12 @@
 .rd-back button {
   width: 100%;
   padding: 14px 24px;
-  background: var(--accent-gradient);
-  color: var(--text-primary);
+  background: var(--accent-primary);
+  color: #FFFFFF;
   border: none;
-  border-radius: var(--radius-md);
-  font-weight: 700;
-  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: clamp(1rem, 2.5vw, 1.05rem);
   cursor: pointer;
   box-shadow: var(--shadow-md);
   transition: all 0.3s ease;
@@ -169,8 +165,9 @@
 }
 
 .rd-back button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(255, 107, 53, 0.45), var(--shadow-glow);
+  background: var(--accent-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 68, 35, 0.3);
 }
 
 .rd-back button:active {

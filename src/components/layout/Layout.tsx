@@ -1,14 +1,16 @@
+import { Outlet } from "react-router";
+
 interface LayoutProps {
   header: React.ReactNode;
-  main: React.ReactNode;
   footer?: React.ReactNode;
 }
-const Layout = ({ header, main, footer }: LayoutProps) => {
+
+const Layout = ({ header, footer }: LayoutProps) => {
   return (
     <main>
       <header>{header}</header>
       <section>
-        {main}
+        <Outlet />
       </section>
       {footer && footer}
     </main>

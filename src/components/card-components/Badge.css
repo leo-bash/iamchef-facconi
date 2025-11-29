@@ -1,36 +1,35 @@
 .badge {
-  background: rgba(255, 140, 66, 0.1);
-  border: 1.5px solid rgba(255, 140, 66, 0.3);
+  background: #FFE5DD;
+  border: 1px solid #FFCAB8;
   color: var(--accent-primary);
-  border-radius: var(--radius-md);
-  padding: 10px 16px;
-  font-size: clamp(0.85rem, 2vw, 0.95rem);
-  font-weight: 600;
+  border-radius: 100px;
+  padding: 8px 16px;
+  font-size: clamp(0.8rem, 2vw, 0.875rem);
+  font-weight: 500;
   margin-bottom: 6px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
-  backdrop-filter: blur(8px);
 }
 
 .badge:hover {
-  background: rgba(255, 140, 66, 0.2);
-  border-color: var(--accent-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(255, 140, 66, 0.3);
+  background: #FFCFBE;
+  border-color: #FFB8A0;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 68, 35, 0.15);
 }
 
 .selected-badge {
   display: inline-flex;
   align-items: center;
-  background: rgba(255, 140, 66, 0.15);
-  border: 1.5px solid var(--accent-primary);
-  color: var(--text-primary);
-  border-radius: var(--radius-lg);
-  padding: 12px 18px;
-  font-size: clamp(0.85rem, 2vw, 0.95rem);
-  font-weight: 600;
-  gap: 12px;
-  box-shadow: var(--shadow-sm), 0 0 20px rgba(255, 140, 66, 0.15);
+  background: var(--accent-primary);
+  border: none;
+  color: #FFFFFF;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
+  font-weight: 500;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   animation: badgeAppear 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -48,32 +47,33 @@
 }
 
 .selected-badge:hover {
-  background: rgba(255, 140, 66, 0.25);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 6px 20px rgba(255, 140, 66, 0.35);
+  background: var(--accent-secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 12px rgba(255, 68, 35, 0.25);
 }
 
 .remove-btn {
-  background: rgba(255, 107, 53, 0.3);
+  background: transparent;
   border: none;
-  color: #ffffff;
-  font-size: 1.1rem;
+  color: #FFFFFF;
+  font-size: 1rem;
   cursor: pointer;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 600;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
+  opacity: 0.9;
 }
 
 .remove-btn:hover {
-  background: var(--accent-secondary);
-  transform: rotate(90deg) scale(1.15);
-  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  opacity: 1;
 }
 
 .remove-btn:active {

@@ -1,11 +1,9 @@
 .suggest-list {
   background: var(--bg-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   width: 100%;
   top: calc(100% + 8px);
-  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  box-shadow: var(--shadow-lg);
   padding: var(--spacing-xs);
   position: absolute;
   z-index: 30;
@@ -52,16 +50,16 @@
 }
 
 .suggest-list-item:hover {
-  background: rgba(255, 140, 66, 0.12);
+  background: #F8F8F8;
   color: var(--text-primary);
-  transform: translateX(6px);
-  border-left: 3px solid var(--accent-primary);
-  padding-left: 13px;
+  transform: translateX(4px);
+  border-left: 2px solid var(--accent-primary);
+  padding-left: 14px;
 }
 
 .suggest-list-item:active {
-  transform: translateX(4px);
-  background: rgba(255, 140, 66, 0.2);
+  transform: translateX(2px);
+  background: #F0F0F0;
 }
 
 @media (min-width: 640px) {

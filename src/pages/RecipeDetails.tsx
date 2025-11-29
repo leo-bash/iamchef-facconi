@@ -10,14 +10,14 @@ import { getSummary } from "../utils/recipe-details-utils/getSummary";
 import DisplayedIngredients from "../components/card-components/DisplayedIngredients";
 import WinePairingComponent from "../components/card-components/WinePairing";
 import "../components/recipe-details/RecipeDetails.css";
+import { useParams, useNavigate } from "react-router";
 
-type RecipeDetailsProps = {
-  id: number;
-  goToBack: (id: number) => void;
-};
-
-export const RecipeDetails = ({ id, goToBack }: RecipeDetailsProps) => {
-  const url = getRecipeDetailsURL(id);
+export const RecipeDetails = () => {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  
+  const recipeId = id ? parseInt(id, 10) : 0;
+  const url = getRecipeDetailsURL(recipeId);
   const { data, loading, error } = useApi<RecipeInterface>(url);
   const recipe = data as RecipeInterface | null;
 
@@ -33,7 +33,7 @@ export const RecipeDetails = ({ id, goToBack }: RecipeDetailsProps) => {
       <div className="recipe-details-root">
         <div className="recipe-details-error">
           Errore nel caricamento dettagli.
-          <button onClick={() => goToBack(id)} className="error-back-btn">
+          <button onClick={() => navigate(-1)} className="error-back-btn">
             Torna indietro
           </button>
         </div>
@@ -87,7 +87,7 @@ export const RecipeDetails = ({ id, goToBack }: RecipeDetailsProps) => {
         )}
 
         <div className="rd-back">
-          <button type="button" onClick={() => goToBack(id)}>
+          <button type="button" onClick={() => navigate(-1)}>
             Torna indietro
           </button>
         </div>
